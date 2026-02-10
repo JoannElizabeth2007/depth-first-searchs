@@ -109,5 +109,5 @@ F H
 
 ## Result:
 Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.
-<p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
+
 
