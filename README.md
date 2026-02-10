@@ -54,42 +54,60 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 
-<hr>
-<h3>Sample Input</h3>
-<hr>
-8 9 <BR>
-A B <BR>
-A C <BR>
-B E <BR>
-C D <BR>
-B D <BR>
-C G <BR>
-D F <BR>
-G F <BR>
-F H <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+## PROGRAM:
+```
+from collections import deque
+from collections import defaultdict
 
-<hr>
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+    for neighbour in graph[start]:
+        if visited[neighbour] == False:
+            dfs(graph, neighbour, visited, path)
+            visited[neighbour] = True
+    return path
 
-<hr>
-<h3>Sample Input</h3>
-<hr>
-5 5 <BR>
-0 1 <BR>
-0 2 <BR>
-0 3 <BR>
-2 3 <BR>
-2 4 <BR>
-<hr>
-<h3>Sample Output</h3>
-<hr>
-['0', '1', '2', '3', '4']
+graph = defaultdict(list)
+n, e = map(int, input().split())
+for i in range(e):
+    u, v = map(str, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+# print(graph)
+start = "A"
+visited = defaultdict(bool)
+path = []
+traversedpath = dfs(graph, start, visited, path)
+print(traversedpath)
+```
+## Sample Input
+8 9
+A B
+A C
+B E
+C D
+B D
+C G
+D F
+G F
+F H
 
-<hr>
-<h3>Result:</h3>
-<hr>
+## Sample Output
+<img width="977" height="526" alt="image" src="https://github.com/user-attachments/assets/9ea868a6-fd40-4fe3-b27c-2bb871204e9d" />
+
+## Sample Input
+5 5
+0 1
+0 2
+0 3
+2 3
+2 4
+
+## Sample Output
+<img width="679" height="406" alt="image" src="https://github.com/user-attachments/assets/656136e0-c873-4def-8931-e2c53987d0d7" />
+
+## Result:
+Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
